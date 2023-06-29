@@ -5,6 +5,7 @@ import (
 	"net/http"
 	"os"
 	"pugg/language"
+	"pugg/pojo"
 	"pugg/service"
 	"strconv"
 )
@@ -31,13 +32,23 @@ func getFans(ctx *gin.Context)  {
 	address := ctx.Query("address")
 	pageNumStr := ctx.Query("pageNum")
 	pageSizeStr := ctx.Query("pageSize")
+	t :=ctx.Query("type")
 	pageNum, err1 := strconv.Atoi(pageNumStr)
 	pageSize, err2 := strconv.Atoi(pageSizeStr)
-	if len(address)==0||err1!=nil||err2!=nil {
+	atoi, err3 := strconv.Atoi(t)
+	if len(address)==0||err1!=nil||err2!=nil||err3!=nil {
 		ctx.JSON(http.StatusOK,ResponseUtil{Status: true,Code: 201,Msg: l.GetParaWrong()})
 		return
 	}
-	fans, total := service.GetFans(address, pageNum, pageSize)
+	var fans []pojo.AAUser
+	var total int
+	if atoi==1 {
+		fans, total = service.GetFans(address, pageNum, pageSize)
+	}else {
+		fans, total = service.GetTeams(address, pageNum, pageSize)
+	}
+
+
 	ctx.JSON(http.StatusOK,ResponseUtil{Status: true,Code:200,Msg: l.GetSuccess(),Data: gin.H{"total":total,"data":fans}})
 
 }

@@ -2,7 +2,7 @@ package router
 
 func ApiGroup() {
 	group := GIN.Group("/api")
-	group.GET("/getUserInfo", getUserInfo)  //获取用户信息,参数address，invite,是否弹出用户上一次查看记录
+	group.GET("/getUserInfo", getUserInfo)  //获取用户信息,参数address，invite
 	group.GET("/getFans",getFans)  //查询直推粉丝 ,参数address，pageNum.pageSize
 	group.GET("/banner",banner)  //获取轮播图
 	group.GET("/getPhoto",getPhoto)  //获取尾图  accept-language zh-cn   en-us
