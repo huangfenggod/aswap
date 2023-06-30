@@ -11,14 +11,11 @@ import (
 //chain 1是bsc，2是eth
 func CheckBscTransfer(chain int)  {
 	var r Request
-
 	if chain==1 {
 		i :=sql.GetBscBlock()+1
 		r.Url="https://api.bscscan.com/api?module=logs&action=getLogs&fromBlock="+strconv.Itoa(i)+"&toBlock=latest&address=0x55d398326f99059ff775485246999027b3197955&topic0=0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef&topic0_2_opr=and&topic2=0x000000000000000000000000aDcD71352e8802a8dA38a7fF331a6D18dC1b518D&apikey=SPT2S73P7YVTRMPS3CHCAYSI94HXQ4B7VV"
-		//log.Println("执行bsc链")
+		log.Println("执行bsc链")
 	}
-
-
 
 	if  chain==2{
 		i :=sql.GetEthBlock()+1
@@ -31,7 +28,7 @@ func CheckBscTransfer(chain int)  {
 	get := r.BscGet()
 	for k,v:=range get{
 		if k=="blockNumber"{
-				sql.UpdateBscBlock(v.(int),chain)
+				sql.UpdateBscBlock(v.(int64),chain)
 		}
 		//map[""]
 		if k=="data" {

@@ -36,7 +36,7 @@ func GetTeamNum(address string)int  {
 	return e.Ex
 }
 
-func UpdateBscBlock(block int,chain int)  {
+func UpdateBscBlock(block int64,chain int)  {
 	DB.Exec("update aa_chain_block set number = ? where id = ?",block,chain)
 }
 
@@ -84,7 +84,7 @@ func ExistsTransaction(transaction string)bool  {
 
 func GetBscBlock() int {
 	var e exists
-	DB.Raw("select number ex from daa_chain_block where id=1").Scan(&e)
+	DB.Raw("select number ex from aa_chain_block where id=1").Scan(&e)
 	return e.Ex
 }
 func GetEthBlock() int {

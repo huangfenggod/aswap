@@ -88,11 +88,11 @@ func images(c *gin.Context)  {
 }
 
 func banner(c *gin.Context)  {
-	var s [3]string
-	s[0]="http://144.34.167.208:8084/api/images?fileName=dof1.jpg"
-	s[1]="http://144.34.167.208:8084/api/images?fileName=dof2.jpg"
-	//s[2]="https://api.dreamspaceos.com/api/images?fileName=dof3.jpg"
-	s[2]="http://144.34.167.208:8084/api/images?fileName=dof4.jpg"
+	var s [4]string
+	s[0]="http://144.34.167.208:8084/api/images?fileName=aaa1.png"
+	s[1]="http://144.34.167.208:8084/api/images?fileName=aaa2.jpg"
+	s[2]="http://144.34.167.208:8084/api/images?fileName=aaa3.png"
+	s[3]="http://144.34.167.208:8084/api/images?fileName=aaa4.png"
 	c.JSON(http.StatusOK,ResponseUtil{Status: true,Code: 200,Msg: "success",Data: s})
 
 }

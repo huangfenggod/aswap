@@ -17,7 +17,7 @@ func main()  {
 	cron.InitCron()
 	router.InitGin()
 	router.ApiGroup()
-	router.GIN.Run(":8081")
+	router.GIN.Run(":8084")
 
 
 }

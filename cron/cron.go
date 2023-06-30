@@ -11,13 +11,10 @@ func InitCron() {
 
 	spec :="0 */1 * * * ?"
 	//spec1 :="0 */2 * * * ?"
-
 	//执行检查充值
 	crontab.AddFunc(spec,checkBscRecharge)
-
 	//crontab.AddFunc(spec1,checkEthRecharge)
 	//crontab.AddFunc(spec2,checkTronRecharge)
-
 
 	log.Println("cron task begin")
 	crontab.Start()
@@ -26,9 +23,9 @@ func InitCron() {
 func checkBscRecharge()  {
 	service.CheckBscTransfer(1)
 }
-func checkEthRecharge()  {
-	service.CheckBscTransfer(2)
-}
+//func checkEthRecharge()  {
+//	service.CheckBscTransfer(2)
+//}
 
 
 
